@@ -14,9 +14,55 @@
 			#wrapper { width: 800px; max-width: 98%; margin: auto; line-height: 1.5em; }
 			
 			h1 {
-				font-size: 2em; /* Adjust size as needed */
-				line-height: 1.3; /* Increase this for more vertical spacing */
-				margin-bottom: 20px; /* Add spacing below the title */
+				font-size: 2em;
+				line-height: 1.3;
+				margin-bottom: 20px;
+			}
+			
+			/* Styles for the expandable box */
+			.accordion-container {
+				border: 1px solid #f6f5ef;
+				background-color: #f6f5ef;
+				border-radius: 5px;
+				margin: 20px 0;
+			}
+		
+			.accordion-header {
+				padding: 15px 20px;
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				font-size: 1em;
+				font-weight: bold;
+				color: #041e42; /* Updated color */
+			}
+		
+			.accordion-header:hover {
+				background-color: #f0efeb;
+			}
+		
+			.accordion-arrow {
+				transition: transform 0.3s ease;
+				color: #041e42; /* Updated color */
+			}
+		
+			.accordion-arrow.open {
+				transform: rotate(180deg);
+			}
+		
+			.panel {
+				padding: 15px 20px;
+				background-color: #ffffff;
+				display: none;
+				border-top: 1px solid #f6f5ef;
+				font-size: 0.9em;
+				color: #333;
+			}
+		
+			.panel p, .panel ul {
+				font-size: 0.8em;
+				color: #333;
 			}
 		</style>
 	</head>
@@ -36,6 +82,10 @@
 			<p>She had seen friends, especially people of color like herself, set their sights on skilled green trades, only to be funneled into less desirable roles, where career paths felt like dead-ends or quota fillers—positions without a promise of true advancement.</p>
 			<p>“I know I might be ‘filling a quota’—I’ve experienced it personally,” she shared.</p>
 			<p>While she saw efforts to bring diversity into the trades, Tamara faced the harsh realities of gender and race-based barriers that dictated where her career could start—and end. The lack of true upward mobility only deepened her frustration.</p>
+
+			<div style="text-align: center; font-size: 1.5em; margin: 20px 0;">
+				&#8226; &#8226; &#8226; &#8226; &#8226;
+			</div>
 
 			<!-- Context + Issue Section -->
 			<p>Tamara’s experience echoes a broader national trend. As climate change intensifies, demand for green jobs—roles in renewable energy, energy efficiency, and green construction—is growing rapidly, especially in places like Saint Paul, Minnesota. These jobs present new paths for economic growth and wealth-building, particularly for communities facing high environmental risks.</p>
@@ -206,28 +256,53 @@
 			
 			<p>Looking ahead, both Saint Paul and Ramsey County are committed to scaling up these efforts by leveraging new federal funding through the BIL and IRA. Their vision is a more inclusive, sustainable green economy that benefits all residents so that no community is left behind as they transition to a climate-resilient future. “The community research completed as a component of the TOPCities program will inform the work of the County as we move forward in seeking resources and funding to support BIPOC communities,” Molenaar emphasized.</p>
 			
-			<hr>
+
+			<div style="text-align: center; font-size: 1.5em; margin: 20px 0;">
+				&#8226; &#8226; &#8226; &#8226; &#8226;
+			</div>
 
 			<!-- Methodology and Data -->
-			<h3 style="font-size: 0.9em;">Methodology and Data</h3>
-			<p style="font-size: 0.8em;">Data was analyzed and visualized using R and Flourish. You can access the datasets in this <a href="https://github.com/beeckcenter/climate-equity-workforce" target="_blank">Github repository</a>.</p>
+		<!-- Expandable "Methodology and Data" Section -->
+			<div class="accordion-container">
+				<div class="accordion-header" onclick="toggleAccordion()">
+					Methodology and data
+					<span class="accordion-arrow">&#9660;</span>
+				</div>
+				<div class="panel">
+					<p>Data was analyzed and visualized using R and Flourish. You can access the datasets in this <a href="https://github.com/beeckcenter/climate-equity-workforce" target="_blank">Github repository</a>.</p>
+					<p>This story was thoroughly researched and fact-checked to the best of our ability. If you spot any errors or have questions about the data, please email Elham Ali at <a href="mailto:elham.ali@georgetown.edu">elham.ali@georgetown.edu</a>.</p>
+					<p>The Saint Paul analysis approach was inspired by the Urban Institute’s methodology for examining clean energy job access by race and gender.</p>
+					<p>Data sources:</p>
+					<ul>
+						<li><strong>City of Saint Paul 2024 User Research Sprint:</strong> Collected data from local government, community organizations, residents, and employers involved in The Opportunity Project for Cities (TOPC) program.</li>
+						<li><strong>National Center for O*NET Development:</strong> Identified occupations in the green energy, construction, and renewables sectors requiring enhanced skills, with increased demand or new emergence.</li>
+						<li><strong>2023 Occupational Employment and Wage Survey:</strong> Provided data on the total employment for these occupations.</li>
+						<li><strong>Urban Institute’s Job-Quality Scoring Method:</strong> Classified occupations using 11 elements of job quality.</li>
+						<li><strong>2022 American Community Survey Public Use Microdata Sample (ACS PUMS):</strong> Analyzed access to green jobs by race/ethnicity, gender, education, and income.</li>
+						<li><strong>US Census Bureau’s 2022 QuickFacts Tool:</strong> Provided population data.</li>
+						<li><strong>Invest.gov’s Public Investments Data (as of January 2024):</strong> Used to calculate funding from the Bipartisan Infrastructure Law and Inflation Reduction Act for Saint Paul.</li>
+						<li><strong>Geocorr (Missouri Census Data Center):</strong> Mapped each Public Use Microdata Area (PUMA) to Saint Paul based on the proportion of the population within each PUMA that overlaps with the city. Combined with ACS PUMS replicate weights, this mapping determined the weight for each observation in the sample.</li>
+					</ul>
+				</div>
+			</div>
+		</div>
 
-			<p style="font-size: 0.8em;">This story was thoroughly researched and fact-checked to the best of our ability. If you spot any errors or have questions about the data, please email Elham Ali at <a href="mailto:elham.ali@georgetown.edu">elham.ali@georgetown.edu</a>.</p>
-
-			<p style="font-size: 0.8em;">The Saint Paul analysis approach was inspired by the Urban Institute’s methodology for examining clean energy job access by race and gender.</p>
-
-			<p style="font-size: 0.8em;">Data sources:</p>
-			<ul style="font-size: 0.8em;">
-				<li><strong>City of Saint Paul 2024 User Research Sprint:</strong> Collected data from local government, community organizations, residents, and employers involved in The Opportunity Project for Cities (TOPC) program.</li>
-				<li><strong>National Center for O*NET Development:</strong> Identified occupations in the green energy, construction, and renewables sectors requiring enhanced skills, with increased demand or new emergence.</li>
-				<li><strong>2023 Occupational Employment and Wage Survey:</strong> Provided data on the total employment for these occupations.</li>
-				<li><strong>Urban Institute’s Job-Quality Scoring Method:</strong> Classified occupations using 11 elements of job quality.</li>
-				<li><strong>2022 American Community Survey Public Use Microdata Sample (ACS PUMS):</strong> Analyzed access to green jobs by race/ethnicity, gender, education, and income.</li>
-				<li><strong>US Census Bureau’s 2022 QuickFacts Tool:</strong> Provided population data.</li>
-				<li><strong>Invest.gov’s Public Investments Data (as of January 2024):</strong> Used to calculate funding from the Bipartisan Infrastructure Law and Inflation Reduction Act for Saint Paul.</li>
-				<li><strong>Geocorr (Missouri Census Data Center):</strong> Mapped each Public Use Microdata Area (PUMA) to Saint Paul based on the proportion of the population within each PUMA that overlaps with the city. Combined with ACS PUMS replicate weights, this mapping determined the weight for each observation in the sample.</li>
-			</ul>
-
+		<!-- Add this script to handle the accordion toggle -->
+		<script>
+			// JavaScript to toggle the accordion
+			function toggleAccordion() {
+				const panel = document.querySelector(".panel");
+				const arrow = document.querySelector(".accordion-arrow");
+	
+				if (panel.style.display === "block") {
+					panel.style.display = "none";
+					arrow.classList.remove("open");
+				} else {
+					panel.style.display = "block";
+					arrow.classList.add("open");
+				}
+			}
+		</script>
 				<script src="flourish-scrolly.js"></script>
 				<script src="https://cdn.flourish.rocks/flourish-scrolly-v1.0.0.min.js"></script>
 			</body>
