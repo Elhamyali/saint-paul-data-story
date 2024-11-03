@@ -159,7 +159,7 @@
 						<p>BIPOC communities, especially Black residents, are often confined to <a href="#story/2682595/slide-2"> low quality, lower-paying green jobs</a>, while higher-quality roles are dominated by white workers.</p>
 						<!-- Education -->
 						<p><a href="#story/2682595/slide-3">Advanced education is a common gateway</a> to high-paying green jobs in Saint Paul, leaving many with vocational or high school diplomas behind.</p>
-						<p>High-quality green jobs in Saint Paul often require <a href="#story/2682595/slide-3">advanced degrees</a>, but educational disparities limit access for many without formal qualifications..</p>
+						<p>High-quality green jobs in Saint Paul often require <a href="#story/2682595/slide-3">a Bachelor's degree</a>, but educational disparities limit access for many without formal qualifications..</p>
 			
 						<!-- End of Scrollytelling section -->
 
@@ -303,6 +303,42 @@
 				}
 			}
 		</script>
+
+		<!-- Updated JavaScript for mobile compatibility -->
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				const toggle = document.querySelector('.accordion-header');
+				const content = document.querySelector('.panel');
+				const arrow = document.querySelector('.accordion-arrow');
+
+				toggle.addEventListener('click', function() {
+					content.classList.toggle('expanded');
+					if (content.classList.contains('expanded')) {
+						content.style.display = 'block';
+						arrow.classList.add('open');
+					} else {
+						content.style.display = 'none';
+						arrow.classList.remove('open');
+					}
+				});
+
+				// Support touch events for mobile
+				toggle.addEventListener('touchstart', function(event) {
+					event.preventDefault(); // Prevents touch event issues
+					content.classList.toggle('expanded');
+
+					if (content.classList.contains('expanded')) {
+						content.style.display = 'block';
+						arrow.classList.add('open');
+					} else {
+						content.style.display = 'none';
+						arrow.classList.remove('open');
+					}
+				});
+			});
+		</script>
+
+		<!-- Flourish scripts -->
 				<script src="flourish-scrolly.js"></script>
 				<script src="https://cdn.flourish.rocks/flourish-scrolly-v1.0.0.min.js"></script>
 			</body>
