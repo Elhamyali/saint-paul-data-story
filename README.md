@@ -1,2 +1,2 @@
-# saint-paul-data-story
-Data story code
+# Climate resilience requires equitable access to quality green jobs. Saint Paul is making strides.
+Read the story on the Beeck Center for Social Impact and Innovation 10-year anniversary [impact report](https://beeckcenter.georgetown.edu/saint-paul-climate-resilience-equity-green-jobs/) and [Full Stack Saint Paul](https://fullstacksaintpaul.com/climate-resilience-requires-equitable-access-to-quality-green-jobs-saint-paul-is-making-strides/). Story originally posted [here](https://www.elhamyali.com/saint-paul-data-story/).
