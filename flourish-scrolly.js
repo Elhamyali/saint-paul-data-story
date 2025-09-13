@@ -146,6 +146,6 @@ function init() {
     initLinks();           // Initialize link handlers for scrollytelling links
     initStories();         // Initialize the story container for scrollytelling
     initIntersection();    // Set up the intersection observers
-    initStyles();          // Apply custom styles for scrollytelling steps
+    // initStyles();  //        // Apply custom styles for scrollytelling steps
 }
 init();

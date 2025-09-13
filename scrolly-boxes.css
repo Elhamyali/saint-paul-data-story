@@ -1,0 +1,75 @@
+/* Sticky Flourish story container */
+.fl-scrolly-sticky {
+  position: sticky; /* script also sets this */
+  top: 12vh;        /* offset for site header/nav */
+  z-index: 1;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Scroll steps (cards) — final design */
+.fl-scrolly-section .fl-scrolly-step {
+  position: relative;
+  background: #fff;
+  border: 1px solid #000;        /* thin dark border */
+  box-shadow: 0 5px 15px rgba(0,0,0,.35);
+  border-radius: 10px;
+  padding: 10px 20px;
+  text-align: left;
+  line-height: 1.2;
+  width: 50%;                    /* centered half-width */
+  max-width: 640px;              /* cap for large screens */
+  margin: 60vh auto 30vh;        /* default pacing */
+  z-index: 2;
+  font-size: 16px;
+  font-family: 'Libre Baskerville', serif;
+}
+
+/* First/last step spacing */
+.fl-scrolly-section .fl-scrolly-step:first-of-type { margin-top: 90vh; }
+.fl-scrolly-section .fl-scrolly-step:last-of-type  { margin-bottom: 20vh; }
+
+/* Active step emphasis (JS toggles .is-active) */
+.fl-scrolly-section .fl-scrolly-step.is-active {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(11,108,255,.18); /* subtle lift */
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+
+/* Optional left accent bar (off by default) */
+.fl-scrolly-section .fl-scrolly-step::before {
+  content: none;
+}
+
+/* Paragraph text inside steps */
+.fl-scrolly-section .fl-scrolly-step p {
+  margin: 0;
+  letter-spacing: 0.005em;
+}
+
+/* Make Flourish step-links bold (not blue) */
+.fl-scrolly-section .fl-scrolly-step a.fl-scrolly-link {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Keyboard focus ring */
+.fl-scrolly-section .fl-scrolly-step a.fl-scrolly-link:focus-visible {
+  outline: 2px solid #0b6cff;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 900px){
+  .fl-scrolly-sticky { top: 8vh; }
+  .fl-scrolly-section .fl-scrolly-step {
+    width: 90vw;
+    max-width: 36rem;
+    margin: 62vh auto 34vh;
+    padding: 14px 16px;
+    line-height: 1.3; /* improve readability on small screens */
+  }
+}

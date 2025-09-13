@@ -5,10 +5,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>TOPC Saint Paul Data Story</title>
 
-    	<!-- Google Fonts link for Libre Baskerville -->
+    <!-- Typeface: Libre Baskerville (headings + body) -->
     	<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 
 		<style type="text/css">
+      /* Base layout + typography */
 			* { box-sizing: border-box; }
 			body { margin: 0; background: #f6f6f6; color: #000000; font-family: 'Libre Baskerville', serif; }
 			#wrapper { width: 800px; max-width: 98%; margin: auto; line-height: 1.5em; }
@@ -19,7 +20,7 @@
 				margin-bottom: 20px;
 			}
 			
-			/* Styles for the expandable box */
+      /* Accordion: container and parts */
 			.accordion-container {
 				border: 1px solid #f6f5ef;
 				background-color: #f6f5ef;
@@ -65,7 +66,11 @@
 				color: #333;
 			}
 		</style>
+		
+		<!-- Scrollytelling card styles (separate file) -->
+    <link rel="stylesheet" href="scrolly-boxes.css">
 	</head>
+	
 	<body>
 		<div id="wrapper">
 			<h1>Climate resilience requires equitable access to quality green jobs. Saint Paul is making strides.</h1>
@@ -235,9 +240,8 @@
 			</div>
 		</div>
 
-		<!-- Add this script to handle the accordion toggle -->
+		<!-- Accordion toggle (click handler) -->
 		<script>
-			// JavaScript to toggle the accordion
 			function toggleAccordion() {
 				const panel = document.querySelector(".panel");
 				const arrow = document.querySelector(".accordion-arrow");
@@ -252,13 +256,14 @@
 			}
 		</script>
 
-		<!-- Updated JavaScript for mobile compatibility -->
+		<!-- Accordion: click + touch support (mobile-friendly) -->
 		<script>
 			document.addEventListener('DOMContentLoaded', function() {
 				const toggle = document.querySelector('.accordion-header');
 				const content = document.querySelector('.panel');
 				const arrow = document.querySelector('.accordion-arrow');
 
+        // Mouse/keyboard activation
 				toggle.addEventListener('click', function() {
 					content.classList.toggle('expanded');
 					if (content.classList.contains('expanded')) {
@@ -270,7 +275,7 @@
 					}
 				});
 
-				// Support touch events for mobile
+				// Touch activation (prevents ghost clicks)
 				toggle.addEventListener('touchstart', function(event) {
 					event.preventDefault(); // Prevents touch event issues
 					content.classList.toggle('expanded');
@@ -289,8 +294,10 @@
 				<style>
 					.flourish-credit { display: none !important; }
 				</style>
-		<!-- Flourish scripts -->
+		
+    		<!-- Scrollytelling behavior (local) -->
 				<script src="flourish-scrolly.js"></script>
+				<!-- Flourish scrolly helper (CDN) -->
 				<script src="https://cdn.flourish.rocks/flourish-scrolly-v1.0.0.min.js"></script>
 			</body>
 		</html>
