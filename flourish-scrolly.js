@@ -3,7 +3,6 @@ function initStories() {
     for (var i = 0; i < stories.length; i++) {
         var story = stories[i];
         
-        // Only initialize for the story with the specific id
         if (story.id === "green-jobs-story") {
             var id = story.dataset.src.split("/")[1];
             var h = story.getAttribute("data-height") || "75vh";
@@ -43,43 +42,40 @@ function initStories() {
     }
 }
 
-
 var last_link_per_story = {};
 function initLinks() {
-	var links = document.getElementsByTagName("a");
-	for (var i = 0; i < links.length; i++) {
-		var link = links[i],
-		    href = link.getAttribute("href");
+    var links = document.getElementsByTagName("a");
+    for (var i = 0; i < links.length; i++) {
+        var link = links[i],
+            href = link.getAttribute("href");
 
-		// Ignore non-Flourish links
-		if (!href || !href.match(/#story\/\d+/)) continue;
+        if (!href || !href.match(/#story\/\d+/)) continue;
 
-		// // Get the ID and set classes
-		var id = href.split("/")[1];
-		last_link_per_story["story-" + id] = link;
-		link.classList.add("fl-scrolly-link");
-		link.classList.add("story-" + id);
-		link.parentNode.classList.add("fl-scrolly-step");
+        var id = href.split("/")[1];
+        last_link_per_story["story-" + id] = link;
+        link.classList.add("fl-scrolly-link");
+        link.classList.add("story-" + id);
+        link.parentNode.classList.add("fl-scrolly-step");
 
-		link.addEventListener("click", function(e) {
-			e.preventDefault();
-			updateStoryFromLink(this);
-		});
-	}
-	for (var link in last_link_per_story) {
-		last_link_per_story[link].classList.add("fl-scrolly-last-link-" + link);
-	}
+        link.addEventListener("click", function(e) {
+            e.preventDefault();
+            updateStoryFromLink(this);
+        });
+    }
+    for (var link in last_link_per_story) {
+        last_link_per_story[link].classList.add("fl-scrolly-last-link-" + link);
+    }
 }
 
 function initIntersection() {
-	var observer = new IntersectionObserver(function(entries, observer) {
-		entries.forEach(function(entry) {
-			if (entry.isIntersecting) updateStoryFromLink(entry.target);
-		});
-	}, { rootMargin: "0px 0px -50% 0px" });
-	document.querySelectorAll(".fl-scrolly-link").forEach(function(link) {
-		return observer.observe(link);
-	});
+    var observer = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) updateStoryFromLink(entry.target);
+        });
+    }, { rootMargin: "0px 0px -50% 0px" });
+    document.querySelectorAll(".fl-scrolly-link").forEach(function(link) {
+        return observer.observe(link);
+    });
 }
 
 function updateStoryFromLink(el) {
@@ -87,9 +83,8 @@ function updateStoryFromLink(el) {
     var slide_number = parseFloat(link_array[link_array.length - 1].replace("slide-", ""));
     var slide_id = slide_number - 1;
 
-    // Target the specific story container by its ID
     var container = document.querySelector("#green-jobs-story");
-    if (!container) return;  // Exit if the container isn't found
+    if (!container) return;
 
     var iframe = container.querySelector("iframe");
     if (iframe) {
@@ -98,54 +93,25 @@ function updateStoryFromLink(el) {
 }
 
 function parents(node) {
-	var nodes = [node]
-	for (; node; node = node.parentNode) {
-		nodes.unshift(node)
-	}
-	return nodes;
+    var nodes = [node]
+    for (; node; node = node.parentNode) {
+        nodes.unshift(node)
+    }
+    return nodes;
 }
 
 function commonAncestor(node1, node2) {
-	var parents1 = parents(node1);
-	var parents2 = parents(node2);
-	if (parents1[0] != parents2[0]) throw "No common ancestor!";
-	for (var i = 0; i < parents1.length; i++) {
-		if (parents1[i] != parents2[i]) return parents1[i - 1]
-	}
-}
-
-function initStyles() {
-	// TODO. The user should be able to override these!
-	var style = document.createElement("style");
-	style.innerHTML = "" +
-		".fl-scrolly-sticky {" +
-			"position: -webkit-sticky;" +
-			"position: sticky;" +
-		"}" +
-		".fl-scrolly-section .fl-scrolly-step {" +
-			"position: relative;" +
-			"width: 50%;" +
-			"margin: 0 auto 50vh;" +
-			"padding: 1.25em;" +
-			"background: #f9f9f9;" + // Light background
-			"color: #333;" + // Dark text color
-			"box-shadow: 3px 3px 5px rgba(0,0,0,0.1);" +
-			"font-family: Helvetica, sans-serif;" +
-			"border-radius: 10px;" +
-			"opacity: 0.95;" +
-			"text-align: center;" +
-			"transform: translate3d(0,0,0);" +
-		"}" +
-		".fl-scrolly-section .fl-scrolly-step a {" +
-			"color: inherit;" +
-		"}";
-	document.body.appendChild(style);
+    var parents1 = parents(node1);
+    var parents2 = parents(node2);
+    if (parents1[0] != parents2[0]) throw "No common ancestor!";
+    for (var i = 0; i < parents1.length; i++) {
+        if (parents1[i] != parents2[i]) return parents1[i - 1]
+    }
 }
 
 function init() {
-    initLinks();           // Initialize link handlers for scrollytelling links
-    initStories();         // Initialize the story container for scrollytelling
-    initIntersection();    // Set up the intersection observers
-    // initStyles();  //        // Apply custom styles for scrollytelling steps
+    initLinks();
+    initStories();
+    initIntersection();
 }
 init();
